@@ -1,0 +1,13 @@
+* {
+    margin: 0;
+}
+.block {
+    background-color: #2C2C2C;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    height: 100vh;
+}
+h1 {
+    color:#E31B6D ;
+}
