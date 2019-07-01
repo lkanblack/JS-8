@@ -25,8 +25,8 @@ let missionCalc = Math.ceil(mission / budgetMonth);
 console.log('Сумма соберется за ' + missionCalc + ' месяцев');
 
 
-let budgetDay = budgetMonth / 30;
-console.log(Math.floor(budgetDay));
+let budgetDay = Math.floor(budgetMonth / 30);
+console.log(budgetDay);
 
 
 switch (true) {
