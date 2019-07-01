@@ -21,8 +21,8 @@ let monthly = prompt('Какие обязательные ежемесячные
 let budgetMonth = parseFloat(money - sum - sum2);
 console.log('Месячный бюджет ' + budgetMonth);
 
-let missionCalc = mission / budgetMonth;
-console.log('Сумма соберется за ' + Math.ceil(missionCalc) + ' месяцев');
+let missionCalc = Math.ceil(mission / budgetMonth);
+console.log('Сумма соберется за ' + missionCalc + ' месяцев');
 
 
 let budgetDay = budgetMonth / 30;
@@ -30,25 +30,16 @@ console.log(Math.floor(budgetDay));
 
 
 switch (true) {
-  case (budgetDay > 800) :
+  case (budgetDay >= 800) :
     console.log( 'Высокий уровень дохода' );
     break;
-  case ( budgetDay > 300 && budgetDay < 800):
+  case ( budgetDay >= 300 && budgetDay <= 800):
     console.log( 'Средний уровень дохода' );
     break;
-  case (budgetDay > 0 && budgetDay < 300):
+  case (budgetDay > 0 && budgetDay <= 300):
     console.log( 'Низкий уровень дохода' );
     break;
-  case (budgetDay < -0):
+  case (budgetDay <= -0):
     console.log( 'Что то пошло не так' );
     break;
 }
-
-
-if(budgetDay == 800) {
-    console.log('Высокий уровень дохода');
-} else if (budgetDay == 300) {
-    console.log('Средний уровень дохода');
-} else if (budgetDay == 0 ) {
-    console.log('Низкий уровень дохода');    
-} 
