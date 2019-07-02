@@ -1,13 +1,17 @@
+'use strict'
+
 let lang = prompt('Выбирите ru или eng ');
 var d = new Date();
 var options = {
 	year: 'numeric',
 	month: 'long',
 	day: 'numeric',
-	weekday: 'long',
+  weekday: 'long',
 };
+
 /*
-// с помощью if 
+// С ПОМОЩЬЮ if 
+
 if(lang === 'ru') {
     alert(d.toLocaleString('ru', options));
 } else if(lang === 'eng'){
@@ -16,8 +20,10 @@ if(lang === 'ru') {
     alert('Выбор языка очень важен!');
 }
 */
+
 /*
-// с помощью switch-case
+// С ПОМОЩЬЮ switch-case
+
 switch (true) {
     case (lang == 'ru') :
       alert('switch: ' + d.toLocaleString('ru', options) );
@@ -26,15 +32,24 @@ switch (true) {
         alert('switch: ' + d.toLocaleString('en', options) );
       break;
   }
-  */
+*/
 
- var arr = [
-    ['ru'],
-    ['eng']
+
+
+/*
+// C ПОМОЩЬЮ МНОГОМЕРНОГО МАССИВА
+
+  let arr = [
+    [( lang == 'ru') ? alert(d.toLocaleString('ru', options)) : ''],
+    [( lang == 'eng') ? alert(d.toLocaleString('en', options)) : '']
   ];
-   
-  for(let j = 0; j < arr.length; j++) {
-    for(let n = 2; n < arr.length; n++) {
-        console.log('time');
-    }
-  }
+*/
+
+  //-------------------------------------------------------- 2 -------------------------------------------------------.
+  /*
+  let namePerson = prompt('Введите ваше имя');
+
+  var message = (namePerson == 'Артем') ? 'Директор' :
+  (namePerson == 'Максим') ? 'Преподаватель' : 'студент';
+  console.log(message);
+  */
