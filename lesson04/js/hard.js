@@ -3,8 +3,10 @@
 function meaning(mean){
     if(typeof mean != 'string'){
         alert('Not a string!');
-    } else {
+    } else if (mean.length > 30 ){
         console.log(mean.trim().substring(0, 30)+ '...');
+    } else {
+        console.log(mean.trim());
     }
 }
-  meaning('      Need to clean all spaces Needto clean all spacesNeed to clean all spaces');
+  meaning('      Some textSome textSome textSome textSome textSome textSome text');
