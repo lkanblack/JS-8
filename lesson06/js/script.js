@@ -13,7 +13,10 @@ start();
 let appData = {
   income: {},
   addIncome: [],
-  expenses: {},
+  expenses: {
+    firstAnswer:'', 
+    secondAnswer: ''
+  },
   addExpenses: [],
   deposit: false,
   mission: 15000,
@@ -22,7 +25,6 @@ let appData = {
     let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую').split(',');
         appData.addExpenses = addExpenses.toLowerCase().split(',');
         appData.deposit = confirm('Есть ли у вас депозит в банке?');
-        
   },
   budget : money,
   budgetDay : 0,
@@ -31,18 +33,15 @@ let appData = {
 
 };
 
-let monthly,
-    monthly2;
 
-
-appData.getExpensesMonth = function(){
+appData.asking = function(){
   let sum = 0;
 
   for(let i = 0; i < 2; i++){
     if(i === 0){
-      monthly = prompt('Какие обязательные ежемесячные расходы у вас есть?').split(',');
+      appData.expenses.firstAnswer = prompt('Какие обязательные ежемесячные расходы у вас есть?').split(',') + ' : ' + sum;
     } else if(i === 1){
-      monthly2 = prompt('Какие обязательные ежемесячные расходы у вас есть?').split(',');
+      appData.expenses.secondAnswer = prompt('Какие обязательные ежемесячные расходы у вас есть?').split(',') + ' : ' + sum;
     }
     do {
       sum = +prompt('Во сколько это обойдется?');
@@ -54,7 +53,7 @@ appData.getExpensesMonth = function(){
 
  
 
-let expensesAmount = appData.getExpensesMonth();
+let expensesAmount = appData.asking();
 
 appData.getAccumulatedMonth = function(){
   return parseFloat(money - expensesAmount);
@@ -88,6 +87,7 @@ appData.getStatusIncome = function(){
       break;
   }
 }
+
 console.log(appData.getStatusIncome());
 console.log('Все расходы вместе: ' + expensesAmount);
 console.log('Накопления за месяц: ' + appData.getAccumulatedMonth());
