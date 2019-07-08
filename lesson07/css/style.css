@@ -1,0 +1,16 @@
+html {
+    background-color: #13161c;
+}
+.block {
+    color:#fafafa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction:column;
+    height: 100vh;
+}
+.block span {
+    font-size: 40px;
+    font-weight: 700;
+    color:#c4ba2f;
+}
