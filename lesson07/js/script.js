@@ -28,18 +28,29 @@ let appData = {
   asking: function(){
 
         if(confirm('Иммется ли у Вас доп.заработок?')){
-          let itemIncome = prompt('Какой у вас есть доп.заработок', 'Freelance');
-          let cashIncome = prompt('Сумма доп.заработка', 1000);
-          appData.income[itemIncome] = cashIncome;
-        }
+            let itemIncome ='';
+            while(itemIncome == '' || itemIncome == parseFloat(itemIncome)){
+              itemIncome = prompt('Какой у вас есть доп.заработок', 'Freelance');
+            }
+            let cashIncome = 0;
+             while(isNaN(cashIncome) || cashIncome == '' || cashIncome == null){
+              cashIncome = prompt('Сумма доп.заработка', 1000)
+             }
+            appData.income[itemIncome] = cashIncome;
+          }
+      
 
         let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', "course, PARTY, night");
-            appData.addExpenses = addExpenses.toLowerCase().split(',');
+            appData.addExpenses = console.log(addExpenses.toUpperCase().split(' ,'));
             appData.deposit = confirm('Есть ли у вас депозит в банке?');
             appData.budget = money;
 
             for(let i = 0; i < 2; i++){
-              let monthly = prompt('Какие обязательные ежемесячные расходы у вас есть?', "home" );
+              let monthly;
+              do {
+                monthly = prompt('Какие обязательные ежемесячные расходы у вас есть?', "home" );
+              }
+              while(monthly == '' || monthly == parseFloat(monthly))
               let sum;
               do {
                 sum = +prompt('Во сколько это обойдется?', 200);
@@ -63,8 +74,14 @@ let appData = {
             },
             getInfoDeposit: function(){
               if(appData.deposit){
-                appData.percentDeposit = prompt('Какой у Вас годовой процент?', '2,2');
-                appData.moneyDeposit = prompt('Какая сумма взята в кредит?', 7000);
+                appData.percentDeposit = 0;
+                while(isNaN(appData.percentDeposit) || appData.percentDeposit == '' || appData.percentDeposit == null){
+                  appData.percentDeposit = prompt('Какой у Вас годовой процент?', 3);
+                }
+               appData.moneyDeposit = 0;
+               while(isNaN(appData.moneyDeposit) || appData.moneyDeposit == '' || appData.moneyDeposit == null){
+                appData.moneyDeposit = prompt('Какая сумма взята в кредит?', 7500);
+               }
               }
             },
             calcSavedMoney: function(){
@@ -111,3 +128,4 @@ console.log('Накопления за месяц: ' , appData.budgetMonth);
 console.log('Все расходы вместе: ' , appData.expensesMonth);
 console.log(appData.getStatusIncome());
 appData.getTargetMonth();
+appData.getInfoDeposit();
