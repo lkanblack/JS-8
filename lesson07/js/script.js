@@ -40,8 +40,8 @@ let appData = {
           }
       
 
-        let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', "course, PARTY, night");
-            appData.addExpenses = console.log(addExpenses.toUpperCase().split(' ,'));
+        let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период', "course party night");
+            appData.addExpenses = addExpenses;
             appData.deposit = confirm('Есть ли у вас депозит в банке?');
             appData.budget = money;
 
@@ -86,8 +86,28 @@ let appData = {
             },
             calcSavedMoney: function(){
               return appData.budgetMonth * appData.period;
+            },
+            capital_letter: function(str){
+              str = appData.addExpenses.split(" ");
+
+              for (var i = 0, x = str.length; i < x; i++) {
+                  str[i] = str[i][0].toUpperCase() + str[i].substr(1);
+              }
+          
+              return str.join(" ");
+            },
+            upperLetter: function() {
+              let arr = appData.addExpenses.split(' ');
+              let arr1 = [];
+              for(var x = 0; x < arr.length; x++){
+                arr1.push(arr[x].charAt(0).toUpperCase()+arr[x].slice(1));
             }
+              console.log(arr1.join(', '));
+            }
+            
 };
+
+
 
 appData.getTargetMonth = function (){
   let cash = parseFloat(Math.floor(appData.mission / appData.budgetMonth));
@@ -129,3 +149,4 @@ console.log('Все расходы вместе: ' , appData.expensesMonth);
 console.log(appData.getStatusIncome());
 appData.getTargetMonth();
 appData.getInfoDeposit();
+appData.upperLetter();
