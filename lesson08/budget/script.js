@@ -148,13 +148,16 @@ let appData = {
       });
   },
   amountCheck : function(){
-    salary_amount.addEventListener('onchange', function(){
-      if(amount.length === ''){
-        start.disabled = true;
+    start.disabled = true;
+    let input = salary_amount;
+    input.addEventListener("change", function(){ 
+      if(input === 0){
+        console.log('button blocked')
       } else {
+        console.log('disabled')
         start.disabled = false;
       }
-    });
+    })
   },
   asking: function(){
 
