@@ -1,4 +1,4 @@
-
+'use strict';
 
 let start = document.getElementById('start'),
     cancel = document.getElementById('cancel'),
@@ -29,6 +29,7 @@ let start = document.getElementById('start'),
     period_select = document.querySelector('.period-select');
 
 // проект 
+start.disabled = true;
 let appData = {
   income:{},
   incomeMonth: 0,
@@ -129,8 +130,8 @@ let appData = {
     let input = period_select;
     let numb =  period_amount;
     input.addEventListener("change", function(){
-      inputResult = this.value;
-      numb.innerHTML = inputResult ;
+      let inputResult = input.value;
+      numb.innerHTML = inputResult;
     });
   },
   blockCancel: function(){
@@ -148,14 +149,14 @@ let appData = {
       });
   },
   amountCheck : function(){
-    start.disabled = true;
     let input = salary_amount;
-    input.addEventListener("change", function(){ 
-      if(input === 0){
-        console.log('button blocked')
-      } else {
+    input.addEventListener('input', function(){ 
+      if(input.value !== ''){
         console.log('disabled')
         start.disabled = false;
+      } else {
+        console.log('button blocked')
+        start.disabled = true;
       }
     })
   },
