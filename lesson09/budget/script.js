@@ -1,4 +1,4 @@
-'use strict';
+
 
 let start = document.getElementById('start'),
     cancel = document.getElementById('cancel'),
@@ -129,8 +129,8 @@ let appData = {
     let input = period_select;
     let numb =  period_amount;
     input.addEventListener("change", function(){
-      let inputResult = input.value;
-      numb.innerHTML = inputResult;
+      inputResult = this.value;
+      numb.innerHTML = inputResult ;
     });
   },
   blockCancel: function(){
