@@ -25,6 +25,7 @@ let start = document.getElementById('start'),
     incomeItems = document.querySelectorAll('.income-items'),
     period_amount = document.querySelectorAll('.period-amount')[0],
     data = document.querySelector('.data'),
+    result = document.querySelector('.result'),
     income_amount = document.querySelector('.income-amount'),
     period_select = document.querySelector('.period-select');
 
@@ -45,25 +46,25 @@ let appData = {
   expensesMonth:0,
   start : function(){
     console.log(this);
-      appData.budget = +salary_amount.value;
-      appData.getExpenses();
-      appData.getIncome();
-      appData.getExpensesMonth();
-      appData.getAddExpenses();
-      appData.getAddIncome();
-      appData.getBudget();
+      this.budget = +salary_amount.value;
+      this.getExpenses();
+      this.getIncome();
+      this.getExpensesMonth();
+      this.getAddExpenses();
+      this.getAddIncome();
+      this.getBudget();
       
-      appData.showResult();
+      this.showResult();
     },
   
   showResult: function(){
-      budgetMonthValue.value = appData.budgetMonth;
-      budgetDayValue.value = appData.budgetDay;
-      expensesMonthValue.value = appData.expensesMonth;
-      additionalExpensesValue.value = appData.addExpenses.join(', ');
-      additionalIncomeValue.value = appData.addIncome.join(', ');
-      targetMonthValue.value = appData.getTargetMonth();
-      incomePeriodValue.value = appData.calcSavedMoney();
+      budgetMonthValue.value = this.budgetMonth;
+      budgetDayValue.value = this.budgetDay;
+      expensesMonthValue.value = this.expensesMonth;
+      additionalExpensesValue.value = this.addExpenses.join(', ');
+      additionalIncomeValue.value = this.addIncome.join(', ');
+      targetMonthValue.value = this.getTargetMonth();
+      incomePeriodValue.value = this.calcSavedMoney();
       period_select.addEventListener("change", function(){
        let sum = appData.calcSavedMoney();
        let field = incomePeriodValue;
@@ -105,8 +106,8 @@ let appData = {
         appData.income[incomeTitle] = incomeAmount;
       }
     });
-    for(let key in appData.income){
-      appData.incomeMonth += +appData.income[key];
+    for(let key in this.income){
+      this.incomeMonth += +this.income[key];
     }
   },
   getAddExpenses: function(){
@@ -157,6 +158,23 @@ let appData = {
         start.disabled = true;
       }
     })
+  },
+  reset: function(){
+    let reject = cancel;
+    let calc = start;
+    let left = data.querySelectorAll('input');
+    let content = result.querySelectorAll('input');
+    reject.addEventListener('click', function(){
+      reject.style.display = 'none';
+      calc.style.display = 'block';
+      left.forEach(function(element){
+        element.disabled = false;
+        element.value = '';
+      });
+      content.forEach(function(element){
+        element.value = '';
+      })
+    });
   },
   asking: function(){
 
@@ -240,6 +258,7 @@ for(let key in appData) {
 
 
 appData.amountCheck();
+appData.reset();
 appData.periodSelect();
 start.addEventListener('click', appData.start.bind(appData));
 firstPlus.addEventListener('click', appData.addIncomeBlock);
