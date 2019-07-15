@@ -152,10 +152,8 @@ let appData = {
     let input = salary_amount;
     input.addEventListener('input', function(){ 
       if(input.value !== ''){
-        console.log('disabled')
         start.disabled = false;
       } else {
-        console.log('button blocked')
         start.disabled = true;
       }
     })

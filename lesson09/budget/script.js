@@ -1,4 +1,4 @@
-'use strict';
+
 
 let start = document.getElementById('start'),
     cancel = document.getElementById('cancel'),
@@ -45,15 +45,15 @@ let appData = {
   expensesMonth:0,
   start : function(){
 
-      appData.budget = +salary_amount.value;
-      appData.getExpenses();
-      appData.getIncome();
-      appData.getExpensesMonth();
-      appData.getAddExpenses();
-      appData.getAddIncome();
-      appData.getBudget();
+      this.budget = +salary_amount.value;
+      this.getExpenses;
+      this.getIncome;
+      this.getExpensesMonth;
+      this.getAddExpenses;
+      this.getAddIncome;
+      this.getBudget;
       
-      appData.showResult();
+      this.showResult;
     },
   
   showResult: function(){
@@ -152,10 +152,8 @@ let appData = {
     let input = salary_amount;
     input.addEventListener('input', function(){ 
       if(input.value !== ''){
-        console.log('disabled')
         start.disabled = false;
       } else {
-        console.log('button blocked')
         start.disabled = true;
       }
     })
