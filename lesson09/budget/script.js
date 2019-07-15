@@ -44,16 +44,16 @@ let appData = {
   budgetMonth:0,
   expensesMonth:0,
   start : function(){
-
-      this.budget = +salary_amount.value;
-      this.getExpenses;
-      this.getIncome;
-      this.getExpensesMonth;
-      this.getAddExpenses;
-      this.getAddIncome;
-      this.getBudget;
+    console.log(this);
+      appData.budget = +salary_amount.value;
+      appData.getExpenses();
+      appData.getIncome();
+      appData.getExpensesMonth();
+      appData.getAddExpenses();
+      appData.getAddIncome();
+      appData.getBudget();
       
-      this.showResult;
+      appData.showResult();
     },
   
   showResult: function(){
@@ -241,7 +241,7 @@ for(let key in appData) {
 
 appData.amountCheck();
 appData.periodSelect();
-start.addEventListener('click', appData.start);
+start.addEventListener('click', appData.start.bind(appData));
 firstPlus.addEventListener('click', appData.addIncomeBlock);
 secondPlus.addEventListener('click', appData.addExpensesBlock);
 appData.blockCancel();
