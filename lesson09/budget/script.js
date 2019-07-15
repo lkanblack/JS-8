@@ -1,4 +1,4 @@
-
+'use strict';
 
 let start = document.getElementById('start'),
     cancel = document.getElementById('cancel'),
