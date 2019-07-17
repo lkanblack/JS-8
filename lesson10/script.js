@@ -8,21 +8,21 @@ function DomElement(selector, height, width, bg, fontSize){
     this.fontSize = fontSize;
 }
 
-DomElement.prototype.create = function(){
+DomElement.prototype.createElement = function(){
+    let newDiv;
     if(this.selector[0] === '.') {
-        let newDiv = document.createElement('div');
+        newDiv = document.createElement('div');
         newDiv.classList.add(this.selector.substr(1));
-        newDiv.textContent = "Some text";
-        newDiv.style.cssText=`height:${this.height};width:${this.width};background:${this.bg};font-size:${this.fontSize}`
-        document.body.appendChild(newDiv);
     } else if(this.selector[0] === '#') {
-        let newPar = document.createElement('p');
-        document.body.appendChild(newPar);
-        newPar.textContent = "Some text";
+        newDiv = document.createElement('p');
     }
+
+    newDiv.textContent = 'Some text';
+    newDiv.style.cssText=`height:${this.height};width:${this.width};background:${this.bg};font-size:${this.fontSize}`;
+    document.body.appendChild(newDiv);
 }
 
-let domElement = new DomElement('.block', '100px', '100px', 'red', '20px');
-domElement.create();
+let domElement1 = new DomElement('.block', '100px', '100px', 'red', '20px');
+domElement1.createElement();
 let domElement2 = new DomElement('#block', '100px', '100px', 'red', '20px');
-domElement2.create();
+domElement2.createElement();
