@@ -60,7 +60,24 @@ AppData.prototype.start = function(){
   
   this.showResult();
 };
+/*
 AppData.prototype.showResult = function(){
+  budgetMonthValue.value = this.budgetMonth;
+  budgetDayValue.value = this.budgetDay;
+  expensesMonthValue.value = this.expensesMonth;
+  additionalExpensesValue.value = this.addExpenses.join(', ');
+  additionalIncomeValue.value = this.addIncome.join(', ');
+  targetMonthValue.value = this.getTargetMonth();
+  incomePeriodValue.value = this.calcSavedMoney();
+  period_select.addEventListener("change", function(){
+   let sum = appData.calcSavedMoney();
+   let field = incomePeriodValue;
+   field.value = sum;
+  });
+
+};
+*/
+AppData.prototype.showResult = () => {
   budgetMonthValue.value = this.budgetMonth;
   budgetDayValue.value = this.budgetDay;
   expensesMonthValue.value = this.expensesMonth;
