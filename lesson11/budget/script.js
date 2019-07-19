@@ -27,7 +27,10 @@ let start = document.getElementById('start'),
     result = document.querySelector('.result'),
     income_amount = document.querySelector('.income-amount'),
     period_select = document.querySelector('.period-select'),
-    depositBank = document.querySelector('.deposit-bank');
+    depositBank = document.querySelector('.deposit-bank'),
+    addBlockInc = document.getElementsByClassName('.income-items');
+    cloneIncomeItem = incomeItems[0].cloneNode(true),
+    cloneExpensesItem = expensesItems[0].cloneNode(true);
 
 // проект 
 start.disabled = true;
@@ -57,10 +60,8 @@ AppData.prototype.start = function(){
   this.getAddIncome();
   this.getInfoDeposit();
   this.getBudget();
-  
   this.showResult();
 };
-/*
 AppData.prototype.showResult = function(){
   budgetMonthValue.value = this.budgetMonth;
   budgetDayValue.value = this.budgetDay;
@@ -74,26 +75,9 @@ AppData.prototype.showResult = function(){
    let field = incomePeriodValue;
    field.value = sum;
   });
-
 };
-*/
-AppData.prototype.showResult = () => {
-  budgetMonthValue.value = this.budgetMonth;
-  budgetDayValue.value = this.budgetDay;
-  expensesMonthValue.value = this.expensesMonth;
-  additionalExpensesValue.value = this.addExpenses.join(', ');
-  additionalIncomeValue.value = this.addIncome.join(', ');
-  targetMonthValue.value = this.getTargetMonth();
-  incomePeriodValue.value = this.calcSavedMoney();
-  period_select.addEventListener("change", function(){
-   let sum = appData.calcSavedMoney();
-   let field = incomePeriodValue;
-   field.value = sum;
-  });
-
-};
+/*
 AppData.prototype.addIncomeBlock = function(){
-  console.log(incomeItems.parentNode);
   let cloneIncomeItem = incomeItems[0].cloneNode(true);
   incomeItems[0].parentNode.insertBefore(cloneIncomeItem, firstPlus);
   incomeItems = document.querySelectorAll('.income-items');
@@ -110,6 +94,18 @@ AppData.prototype.addExpensesBlock = function(){
     secondPlus.style.display = 'none';
   }
 };
+*/
+
+AppData.prototype.addBlocks = function(meaning){
+  let items = meaning;
+  let cloneItems = items[0].cloneNode(true);
+  let plus = items[0].parentNode.querySelector('button');
+  items[0].parentNode.insertBefore(cloneItems, plus);
+  if(items.length === 3){
+    plus.style.display = 'none';
+  }
+};
+
 AppData.prototype.getExpenses = function(){
   expensesItems.forEach(function(item){
       let itemExpenses = item.querySelector('.expenses-title').value;
@@ -254,41 +250,45 @@ AppData.prototype.getStatusIncome = function(){
       return( 'Что то пошло не так' );
       break;
   }
-};    
+}; 
+AppData.prototype.eventsListeners = function(){
+  checkbox.addEventListener('change', function(){
+    if(checkbox.checked === true){
+      depositBank.style.display = 'inline-block';
+      deposit_amount.style.display = 'inline-block';
+      appData.deposit = 'true';
+      depositBank.addEventListener('change', function(){
+        let selecIndex = this.options[this.selectedIndex].value;
+        if(selecIndex === 'other'){
+          deposit_percent.style.display = 'inline-block';
+          deposit_percent.value = '';
+        } else {
+          deposit_percent.style.display = 'none';
+          deposit_percent.value = selecIndex;
+        }
+      })
+    } else {
+      depositBank.style.display = 'none';
+      deposit_amount.style.display = 'none';
+      deposit_amount.value = '';
+      appData.deposit = 'false';
+    }
+  })
+};
 
 let appData = new AppData();
 
-console.log(appData);
-
-checkbox.addEventListener('change', function(){
-  if(checkbox.checked === true){
-    depositBank.style.display = 'inline-block';
-    deposit_amount.style.display = 'inline-block';
-    appData.deposit = 'true';
-    depositBank.addEventListener('change', function(){
-      let selecIndex = this.options[this.selectedIndex].value;
-      if(selecIndex === 'other'){
-        deposit_percent.style.display = 'inline-block';
-        deposit_percent.value = '';
-      } else {
-        deposit_percent.style.display = 'none';
-        deposit_percent.value = selecIndex;
-      }
-    })
-  } else {
-    depositBank.style.display = 'none';
-    deposit_amount.style.display = 'none';
-    deposit_amount.value = '';
-    appData.deposit = 'false';
-  }
-})
-
-
 appData.amountCheck();
+appData.eventsListeners();
 appData.reset();
 appData.periodSelect();
 start.addEventListener('click', appData.start.bind(appData));
+
+/*
 firstPlus.addEventListener('click', appData.addIncomeBlock);
 secondPlus.addEventListener('click', appData.addExpensesBlock);
+*/
+firstPlus.addEventListener('click', appData.addBlocks(incomeItems));
+secondPlus.addEventListener('click', appData.addBlocks(expensesItems));
 appData.blockCancel();
 
