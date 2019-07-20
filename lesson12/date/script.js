@@ -1,17 +1,21 @@
 let date = new Date();
 
-var currentHours = date.getHours()
+let currentHours = date.getHours();
+let content = document.getElementById('content');
+let element = document.createElement('p');
+let element1 = document.createElement('p');
+let element2 = document.createElement('p');
+let element3 = document.createElement('p');
+content.appendChild(element);
 if (currentHours < 12) {
-    document.write('Доброе утро')
+    element.textContent = 'Доброе утро';
 } else if (currentHours < 18) {
-    document.write('Добрый день')
+    element.textContent = 'Доброе день';
 } else if (currentHours < 22) {
-    document.write('Добрый вечер')
+    element.textContent = 'Доброе вечер';
   }else {
-    document.write('Доброй ночи')
+    element.textContent = 'Доброй ночи';
 }
-
-document.write("<br>");
 
 
 function getWeekDay(date) {
@@ -19,8 +23,8 @@ function getWeekDay(date) {
   
     return days[date.getDay() - 1];
   }
-document.write('Сегодня: ' + getWeekDay(date));
-document.write("<br>");
+    element1.textContent = 'Сегодня: ' + getWeekDay(date);
+    content.appendChild(element1);
 
 let hours = date.getHours(),
     minutes = date.getMinutes(),
@@ -41,8 +45,8 @@ let hours = date.getHours(),
             seconds].join(':') + (isPM ? ' pm' : 'am');
 
 
-document.write('Текущее время: '+ time);
-document.write("<br>");
+element2.textContent = 'Текущее время: '+ time;
+content.appendChild(element2);
 
 function newYear(){
     let currentYear = date;
@@ -53,4 +57,5 @@ function newYear(){
 }
 newYear();
 
-document.write('До Нового года осталось ' + newYear() + ' дней');
+element3.textContent = 'До Нового года осталось ' + newYear() + ' дней';
+content.appendChild(element3);
