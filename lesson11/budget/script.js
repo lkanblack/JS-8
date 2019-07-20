@@ -127,25 +127,7 @@ AppData.prototype.getBudget = function(){
   this.budgetMonth = parseFloat(this.budget + this.incomeMonth - this.expensesMonth + (this.moneyDeposit * this.percentDeposit)/12);
   this.budgetDay = parseFloat(Math.floor(this.budgetMonth / 30));
 };
-/*
-AppData.prototype.getAddExpenses = function(){
-  let addExpenses = additional_expensesItem.value.split(',');
-  addExpenses.forEach(function(item){
-    item = item.trim();
-    if(item !== ''){
-      appData.addExpenses.push(item);
-    }
-  })
-};
-AppData.prototype.getAddIncome = function(){
-  fields.forEach(function(item){
-    let itemValue = item.value.trim();
-    if(item.value !== ''){
-      appData.addIncome.push(itemValue);
-    }
-  });
-};
-*/
+
 AppData.prototype.addExpInc = function(cash, destination, cash2, destination2){
   let addAll = cash.value.split();
   addAll.forEach(function(item){
