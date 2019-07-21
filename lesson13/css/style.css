@@ -570,7 +570,7 @@ footer {
     width: 40rem;
     left: 38%;
     top: 10%;
-    -webkit-transform: translateX(-200px);
+    -webkit-transform: translateX(-50px);
     transform: translateX(-50px);
     padding: 2rem 6rem;
     background-color: #24241f; }
