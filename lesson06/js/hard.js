@@ -10,7 +10,8 @@ for(let i = 0; i < week.length; i++){
     element.textContent = week[i];
     if(i == date){
         element.style.fontWeight = '900';
-    } else if(week[i] == 'суббота' || week[i] == 'воскресенье') {
+    } 
+    if(week[i] == 'суббота' || week[i] == 'воскресенье') {
         element.style.fontStyle = 'italic';
-    }
+    } 
 }
