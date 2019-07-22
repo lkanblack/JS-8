@@ -73,6 +73,7 @@ window.addEventListener('DOMContentLoaded', function(){
     // popup
 
     let count = 0;
+    let mWidth = screen.width;
     const togglePopup = () => {
         const popup = document.querySelector('.popup'),
             popupBtn = document.querySelectorAll('.popup-btn'),
@@ -81,7 +82,9 @@ window.addEventListener('DOMContentLoaded', function(){
             popupBtn.forEach((elem) =>{
                 elem.addEventListener('click', () =>{
                     popup.style.display = 'block';
-                    popupAnimation();
+                    if(mWidth > 768){
+                        popupAnimation();
+                    }
                 });
                 
             });
@@ -109,12 +112,9 @@ window.addEventListener('DOMContentLoaded', function(){
     };
 
     // mobile version
-    let mobile = 530,
-        mWidth = screen.width;
-    console.log(mWidth);
-    if(mWidth < mobile){
+    if(mWidth < 768){
         count = 1;
-        popupContent.style.opacity = 1;
+        popupContent.style.opacity = 1 ;
     } 
 });
 
