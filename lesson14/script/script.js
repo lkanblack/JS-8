@@ -47,7 +47,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
     // меню 
 
-    const toggleMenu = () => {
+    /*const toggleMenu = () => {
 
         const btnMenu = document.querySelector('.menu'),
               menu = document.querySelector('menu'),
@@ -67,8 +67,30 @@ window.addEventListener('DOMContentLoaded', function(){
         })
     };
 
-    toggleMenu();
+    toggleMenu();*/
+    const toggleMenu = () => {
+        const btnMenu = document.querySelector('.menu'),
+            menu = document.querySelector('menu'),
+            closeBtn = document.querySelector('.close-btn'),
+            slideMenu =document.querySelector('.active-menu'),
+            menuItem = menu.querySelectorAll('ul>li');
 
+            document.addEventListener('click', (event) => {
+                let target = event.target;
+                //target = target.closest('.menu');
+                console.log(target);
+                if(target.closest('.menu') == btnMenu){
+                    menu.classList.toggle('active-menu');
+                } else if (target == closeBtn){
+                    menu.classList.toggle('active-menu');
+                }
+              });
+    }
+    toggleMenu(); 
+
+
+
+ 
 
     // popup
 
