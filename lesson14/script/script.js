@@ -40,10 +40,9 @@ window.addEventListener('DOMContentLoaded', function(){
             }
 
             updateClock();
-            updateClock();
     }
 
-    countTimer('29 july 2019');
+    countTimer('23 july 2019');
 
     // меню 
 
@@ -72,16 +71,18 @@ window.addEventListener('DOMContentLoaded', function(){
         const btnMenu = document.querySelector('.menu'),
             menu = document.querySelector('menu'),
             closeBtn = document.querySelector('.close-btn'),
-            slideMenu =document.querySelector('.active-menu'),
-            menuItem = menu.querySelectorAll('ul>li');
+            menuItem = menu.querySelector('ul');
 
             document.addEventListener('click', (event) => {
                 let target = event.target;
-                //target = target.closest('.menu');
                 console.log(target);
                 if(target.closest('.menu') == btnMenu){
                     menu.classList.toggle('active-menu');
-                } else if (target == closeBtn){
+                }else if (target == closeBtn){
+                    menu.classList.toggle('active-menu');
+                }else if(target == menu){
+                    menu.classList.toggle('active-menu');
+                } else if(target !== menuItem){
                     menu.classList.toggle('active-menu');
                 }
               });

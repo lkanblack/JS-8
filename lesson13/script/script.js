@@ -40,7 +40,6 @@ window.addEventListener('DOMContentLoaded', function(){
             }
 
             updateClock();
-            updateClock();
     }
 
     countTimer('29 july 2019');
