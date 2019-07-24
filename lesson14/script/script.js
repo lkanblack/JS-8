@@ -71,20 +71,28 @@ window.addEventListener('DOMContentLoaded', function(){
         const btnMenu = document.querySelector('.menu'),
             menu = document.querySelector('menu'),
             closeBtn = document.querySelector('.close-btn'),
-            menuItem = menu.querySelector('ul');
+            menuItem = menu.querySelectorAll('ul>li>a');
+            const handlerMenu  = () => {
+                menu.classList.toggle('active-menu');
+            }; 
 
             document.addEventListener('click', (event) => {
                 let target = event.target;
                 console.log(target);
                 if(target.closest('.menu') == btnMenu){
-                    menu.classList.toggle('active-menu');
+                    handlerMenu();
                 }else if (target == closeBtn){
-                    menu.classList.toggle('active-menu');
-                }else if(target == menu){
-                    menu.classList.toggle('active-menu');
-                } else if(target !== menuItem){
-                    menu.classList.toggle('active-menu');
-                }
+                    handlerMenu();
+                }else if(target !== menu){
+                    handlerMenu();
+                } 
+                if(target){ 
+                    menuItem.forEach((item, i) => {
+                        if(item === target){
+                            handlerMenu(i);
+                        }
+                    });
+                } 
               });
     }
     toggleMenu(); 
