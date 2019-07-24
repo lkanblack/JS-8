@@ -78,14 +78,14 @@ window.addEventListener('DOMContentLoaded', function(){
 
             document.addEventListener('click', (event) => {
                 let target = event.target;
-                console.log(target);
                 if(target.closest('.menu') == btnMenu){
                     handlerMenu();
                 }else if (target == closeBtn){
                     handlerMenu();
-                }else if(target == menu){
-                    handlerMenu();
-                }else if(target){ 
+                }else if (!target.closest('.menu')){
+                    menu.classList.remove('active-menu');
+                }
+                else if(target){ 
                     menuItem.forEach((item, i) => {
                         if(item === target){
                             handlerMenu(i);
