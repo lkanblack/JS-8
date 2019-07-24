@@ -83,10 +83,9 @@ window.addEventListener('DOMContentLoaded', function(){
                     handlerMenu();
                 }else if (target == closeBtn){
                     handlerMenu();
-                }else if(target !== menu){
+                }else if(target == menu){
                     handlerMenu();
-                } 
-                if(target){ 
+                }else if(target){ 
                     menuItem.forEach((item, i) => {
                         if(item === target){
                             handlerMenu(i);
@@ -94,6 +93,10 @@ window.addEventListener('DOMContentLoaded', function(){
                     });
                 } 
               });
+
+           
+            
+              
     }
     toggleMenu(); 
 
