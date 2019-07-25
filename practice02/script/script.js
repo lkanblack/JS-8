@@ -191,6 +191,19 @@ window.addEventListener('DOMContentLoaded', function(){
       };
 
       tabs();
+      
+      //add dots
+
+      let dotsList = document.querySelector('.portfolio-dots'),
+            slidesAmount = document.querySelectorAll('.portfolio-item');
+
+      slidesAmount.forEach((event)=>{
+          event = document.createElement('li');
+          event.classList.add('dot');
+          dotsList.appendChild(event);
+      });
+            
+      console.log(dotsList);
 
       // slider
     
@@ -284,6 +297,7 @@ window.addEventListener('DOMContentLoaded', function(){
       }
 
       slider();
+
 });
 
 
