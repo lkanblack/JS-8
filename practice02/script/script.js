@@ -194,16 +194,18 @@ window.addEventListener('DOMContentLoaded', function(){
       
       //add dots
 
-      let dotsList = document.querySelector('.portfolio-dots'),
-            slidesAmount = document.querySelectorAll('.portfolio-item');
+      const addDots = () =>{
+        let dotsList = document.querySelector('.portfolio-dots'),
+        slidesAmount = document.querySelectorAll('.portfolio-item');
 
-      slidesAmount.forEach((event)=>{
-          event = document.createElement('li');
-          event.classList.add('dot');
-          dotsList.appendChild(event);
-      });
-            
-      console.log(dotsList);
+        slidesAmount.forEach((event)=>{
+            event = document.createElement('li');
+            event.classList.add('dot');
+            dotsList.appendChild(event);
+        });   
+      };
+
+      addDots();
 
       // slider
     
@@ -293,7 +295,7 @@ window.addEventListener('DOMContentLoaded', function(){
             }
         });
 
-        startSlide(1500);
+        startSlide(2000);
       }
 
       slider();
