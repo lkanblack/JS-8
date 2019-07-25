@@ -33,20 +33,31 @@ document.addEventListener("DOMContentLoaded", function(event){
     
     let domElement1 = new DomElement('.hard', '100px', '100px', 'lightGreen', '20px', 'absolute');
     domElement1.createElement();
+    
+        let box = document.querySelector('.hard');
+        let boxMoveX = 0;
+        let boxMoveY = 0;
 
-    document.addEventListener('keydown', function(e){
-        if(e.keyCode == key_left){
-
+    function moveBox(e) { 
+        if (e.keyCode == key_right) { 
+            boxMoveX += 10; 
+            box.style.left = boxMoveX + "px"; 
+        } 
+        else if (e.keyCode == key_left) {
+            boxMoveX -= 10; 
+            box.style.left = boxMoveX + "px"; 
         }
-        if(e.keyCode == key_right){
-
+        else if (e.keyCode == key_down) {
+            boxMoveY += 10; 
+            box.style.top = boxMoveY + "px"; 
         }
-        if(e.keyCode == key_up){
-
+        else if (e.keyCode == key_up) {
+            boxMoveY -= 10; 
+            box.style.top = boxMoveY + "px"; 
         }
-        if(e.keyCode == key_down){
-
-        }
-    });
+    } 
+        document.onkeydown = moveBox;
 
 });
+
+
