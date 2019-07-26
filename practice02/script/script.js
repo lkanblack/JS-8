@@ -134,8 +134,8 @@ window.addEventListener('DOMContentLoaded', function(){
     };
 
     // smooth scroll
-    /*
-    const anchors = [].slice.call(document.querySelectorAll('a[href*="#"]')),
+  
+   /* const anchors = [].slice.call(document.querySelectorAll('a[href*="#"]')),
     animationTime = 400,
     framesCount = 50;
 
@@ -157,7 +157,7 @@ window.addEventListener('DOMContentLoaded', function(){
           }, animationTime / framesCount);
         });
       });
-    */
+*/
 
       // tabs
 
@@ -197,15 +197,21 @@ window.addEventListener('DOMContentLoaded', function(){
       const addDots = () =>{
         let dotsList = document.querySelector('.portfolio-dots'),
         slidesAmount = document.querySelectorAll('.portfolio-item');
+        let firstDot = dotsList[0];
 
         slidesAmount.forEach((event)=>{
             event = document.createElement('li');
             event.classList.add('dot');
             dotsList.appendChild(event);
-        });   
+        }); 
+
+        let dot = document.querySelector('.dot');
+        console.log(dot);
+        dot.classList.add('dot-active');
       };
 
       addDots();
+
 
       // slider
     
