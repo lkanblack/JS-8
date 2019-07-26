@@ -135,7 +135,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
     // smooth scroll
   
-   /* const anchors = [].slice.call(document.querySelectorAll('a[href*="#"]')),
+    const anchors = [].slice.call(document.querySelectorAll('a[href*="#"]')),
     animationTime = 400,
     framesCount = 50;
 
@@ -157,7 +157,6 @@ window.addEventListener('DOMContentLoaded', function(){
           }, animationTime / framesCount);
         });
       });
-*/
 
       // tabs
 
