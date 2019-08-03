@@ -514,7 +514,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
       modalFormSend();
 
-        // bottom from send
+        // bottom from sendв
       const bottomFormSend = () => {
         const errorMessage = 'что то пошло не так',
             loadMessage = 'Загрузка...',
