@@ -394,8 +394,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
       calc(100);
 
-      // send form  AJAX
-      // fetch
+      // send form  AJAX FETCH
       const sendForm = () => {
         const errorMessage = 'что то пошло не так',
             loadMessage = 'Загрузка...',
