@@ -13,7 +13,7 @@ const toggleMenu = () => {
                 handlerMenu();
             }else if (target == closeBtn){
                 handlerMenu();
-            }else if (!target.closest('.menu')){
+            }else if(target !== menu) {
                 menu.classList.remove('active-menu');
             }
             else if(target){ 

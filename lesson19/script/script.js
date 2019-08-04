@@ -61,10 +61,10 @@ window.addEventListener('DOMContentLoaded', function(){
                     handlerMenu();
                 }else if (target == closeBtn){
                     handlerMenu();
-                }else if (!target.closest('.menu')){
-                    menu.classList.remove('active-menu');
                 }
-                else if(target){ 
+                else if(target !== menu) {
+                    menu.classList.remove('active-menu');
+                }  else if(target){ 
                     menuItem.forEach((item, i) => {
                         if(item === target){
                             handlerMenu(i);
